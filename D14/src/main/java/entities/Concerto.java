@@ -2,6 +2,7 @@ package entities;
 
 import java.time.LocalDate;
 
+import javax.persistence.DiscriminatorValue;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -17,6 +18,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 
+
 public class Concerto extends Evento {
     public enum Genere {
         CLASSICO,
@@ -24,6 +26,7 @@ public class Concerto extends Evento {
         POP
     }
 
+    
     private Genere genere;
     private boolean inStreaming;
 

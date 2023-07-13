@@ -1,25 +1,21 @@
 package dao;
 
-import java.util.List;
-import java.util.Set;
 import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityTransaction;
-import javax.persistence.TypedQuery;
 
-import entities.Concerto;
-import entities.Evento;
+import entities.Persona;
 
-public class EventoDAO {
+public class PersonaDAO {
 	
 	private final EntityManager em;
 	
-	public EventoDAO(EntityManager em) {
+	public PersonaDAO(EntityManager em) {
 		this.em = em;
 	}
 	
-	public void save(Evento s) {
+	public void save(Persona s) {
 
 		EntityTransaction t = em.getTransaction();
 		t.begin();
@@ -28,26 +24,26 @@ public class EventoDAO {
 		
 		t.commit();
 		
-		System.out.println("Evento salvato correttamente");
+		System.out.println("Persona salvata correttamente");
 	}
 	
-	public Evento findById(Long id) {
-		Evento found = em.find(Evento.class, id);
+	public Persona findById(Long id) {
+		Persona found = em.find(Persona.class, id);
 		return found;
 	}
 	
 
 	public void findByIdAndDelete(Long id) {
-		Evento found = em.find(Evento.class, id);
+		Persona found = em.find(Persona.class, id);
 		if(found != null) {
 			EntityTransaction t = em.getTransaction();
 			t.begin();
 			em.remove(found);
 			t.commit();
-			System.out.println("Evento eliminato correttamente");
+			System.out.println("Persona eliminata correttamente");
 			
 		} else {
-			System.out.println("Evento non trovato");
+			System.out.println("Persona non trovato");
 	}
 	
 	
@@ -55,9 +51,9 @@ public class EventoDAO {
 }
 	
 	public void refresh(Long id) {
-		Evento found = em.find(Evento.class, id);
+		Persona found = em.find(Persona.class, id);
 
-		found.setTitolo("BurroCacao");
+		found.setNome("BurroCacao");
 
 		System.out.println("PRE REFRESH");
 		System.out.println(found);
@@ -68,5 +64,6 @@ public class EventoDAO {
 		System.out.println(found);
 	}
 
+	
 
 }

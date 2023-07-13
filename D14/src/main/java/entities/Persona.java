@@ -10,12 +10,17 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 
 import javax.persistence.Table;
+
+
+
 import java.time.LocalDate;
+import java.util.Set;
 
 import lombok.Getter;
 import lombok.Setter;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
+import javax.persistence.ManyToMany;
 
 
 @Entity
@@ -38,7 +43,10 @@ public class Persona {
 	@Enumerated(EnumType.STRING)
     private Sesso sesso;
 	
+	@ManyToMany
+	private Set<GaraDiAtletica> gareAtletica;
 	
+
 	
 	public Persona (String nome, String cognome, String email, LocalDate dataNascita, Sesso sesso) {
 		
